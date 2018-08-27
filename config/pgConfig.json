@@ -1,0 +1,10 @@
+{
+  "ServerUrl": "http://192.168.1.244:8010",
+  "Postgre" :{
+    "user": "postgres",
+    "password": "xyf.3342",
+    "database": "postgres",
+    "host": "127.0.0.1",
+    "port": 5433
+  }
+}
