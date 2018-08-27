@@ -9,7 +9,7 @@
 UPDATE user_tbl SET name = '李四' WHERE name = '张三';
 
 >  # 删除
-从数据库中删除数据: DELETE
+从数据库中删除数据:  DELETE
 DELETE FROM user_tbl WHERE name = '李四' ;
 
 >  # 床架一个数据库
