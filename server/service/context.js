@@ -11,7 +11,7 @@ export default async function (app) {
     app.context.asset = asset[String(process.env.NODE_ENV).trim() || 'development'];
     app.context.render = ejser({
         root: 'view/default', // -------- 模板根目录
-        cache: false, // ----------------- 是否缓存
+        cache: false, // ---------------- 是否缓存
         viewExt: 'ejs', // -------------- 模板后缀
         debug: false, // ---------------- Debug模式
         method: 'memory', // ------------ 读取模板的方式，可选值 stream file  memory

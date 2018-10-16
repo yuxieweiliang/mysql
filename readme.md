@@ -63,3 +63,68 @@ ALTER TABLE user_tbl RENAME TO backup_tbl;
 >  #
 删除表格:
 DROP TABLE IF EXISTS backup_tbl;
+
+
+
+书:
+角色介绍 / 地理位置 / 时代背景 /
+
+角色:
+book_role_character_desig: 角色设计
+
+book:
+{book_settings: ['1', '2']}
+
+book_sets:
+[{
+    id: 1,
+    title: '宠物',
+    setting_doc: [10, 20],
+    setting_other: ['a10', 'b20'],
+    setting_doc_config: ['name', 'introduction']
+  },{
+    id: 2,
+    title: '兵器',
+    setting_doc: ['1a', '2b'],
+    setting_other: ['12b', '11a'],
+    setting_doc_config: ['name', 'introduction', 'grade']
+  },
+]
+
+book_setting_doc:
+[
+{id: 10,   name: '', introduction: '', grade: '', age: '', color: ''},
+{id: 20,   name: '', introduction: '', grade: '', age: '', color: ''},
+{id: '2b', name: '', introduction: '', grade: '', age: '', color: ''},
+{id: '1a', name: '', introduction: '', grade: '', age: '', color: ''},
+]
+
+book_set_other:
+[
+{id: 'a10',   key: '', value: ''},
+{id: 'b20',   key: '', value: ''},
+{id: '12b', key: '', value: ''},
+{id: '11a', key: '', value: ''},
+]
+
+{
+  title: '宠物',
+  content: {
+    name: '蒂娜',
+    introduction: ''
+  }
+}
+
+
+book_chapter:
+{
+  book_chapter_id: 0,
+  book_chapter_title: '',
+  book_chapter_content: '',
+  book_chapter_discuss: '', # 讨论
+  book_chapter_leave: '', # 留言
+  book_chapter_page: '',
+  book_chapter_create_time: '',
+  book_chapter_update_time: '',
+}
+

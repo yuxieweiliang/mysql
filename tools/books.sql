@@ -1,44 +1,26 @@
 /*
- 创建学生表
+*  删除表
 */
-
-
+DROP TABLE IF EXISTS public.books;
 /*
-*  设置字符集
-*  SET NAMES utf8;
+*  创建书籍表
+*  book_id  < 主键 >
+*  book_name 书名
+*  book_author 作者
+*  book_introduction 简介
 */
+CREATE TABLE if NOT EXISTS public.books (
+  book_id               SERIAL              NOT NULL PRIMARY KEY,
+  book_name             varchar(16)         NOT NULL,
+  book_author           varchar(100)      DEFAULT NULL,
+  book_introduction     varchar(500)      DEFAULT NULL,
+  book_settings         varchar[]      DEFAULT NULL
+) WITH (OIDS = FALSE);
 
-/*
-*  来禁用外键约束.
-*  SET FOREIGN_KEY_CHECKS = 0;
-*/
-
-DROP TABLE IF EXISTS books;
-/*select 1 from sdafasdf;
-*  identity: 整数 自动增长
-*  PRIMARY KEY 主键
-*  判断这张表是否存在，若存在，则跳过创建表操作
-*/
-CREATE TABLE public.books (
-  id              integer             NOT NULL,
-  name            character(100)      DEFAULT NULL,
-  introduction    character(100)      DEFAULT NULL,
-  author          character(100)      DEFAULT NULL,
-
-  CONSTRAINT id PRIMARY KEY (id)
-)
-WITH (
-  OIDS=FALSE
-);
-
+/*  ALTER TABLE <tablename> OWNER TO <username>  将这张表赋给当前用户  */
 ALTER TABLE public.books
   OWNER TO postgres;
 
 COMMENT ON TABLE public.books
-  IS '这是一个书籍信息表';
-
-/*
-*  来启动外键约束.
-*  SET FOREIGN_KEY_CHECKS = 1;
-*/
+IS '书籍 - 基础信息表';
 

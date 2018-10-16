@@ -2,7 +2,7 @@
 -- 转存sql文件时，每个表的导入都是如下创建方式，
 -- 先判断是否存在，若存在，则删除这张表，重新创建，以下示例均为demo：
 -- ----------------------------------------------------------------------
-DROP TABLE IF EXISTS `student`;#
+DROP TABLE IF EXISTS `student`;
 CREATE TABLE `student` (
   `s_id` varchar(40) NOT NULL,
   `s_name` varchar(255) default NULL,

@@ -5,44 +5,63 @@
  */
 const fs = require('fs')
 const path = require('path')
-const pg = require('pg');
+const { Client } = require('pg');
 const pgConfig = require('../config/pgConfig.json')
-const client = new pg.Client(pgConfig.Postgre);
+const client = new Client(pgConfig.Postgre);
 
 console.log('\n======================================')
 console.log('开始初始化数据库...')
 
-// 初始化 SQL 文件路径
-const STUDENTS = path.join(__dirname, './students.sql')
-const TEACHERS = path.join(__dirname, './teachers.sql')
+function readSql(url) {
+  const PATH =  path.normalize(path.join(__dirname, url));
+  return fs.readFileSync(PATH, 'utf8');
+}
+
+/**
+ * 初始化 SQL 文件路径
+ * 读取 .sql 文件内容
+ */
+const delete_table      = readSql('./delete_table.sql');
+const create_type       = readSql('./create_type.sql');
+
+const books             = readSql('./books.sql');
+const book_sets         = readSql('./book_sets.sql');
+const book_roles        = readSql('./book_roles.sql');
+const book_set_other    = readSql('./book_set_other.sql');
+const book_chapter      = readSql('./book_chapter.sql');
+
+const users             = readSql('./users.sql');
 
 
-console.log(pgConfig.Postgre)
-console.log(`准备读取 SQL 文件：${STUDENTS}`)
-
-// 读取 .sql 文件内容
-const students = fs.readFileSync(STUDENTS, 'utf8')
-const teachers = fs.readFileSync(TEACHERS, 'utf8')
 ;(async function() {
   try{
-    const connect = await client.connect();
-    if(connect) console.log("准备向****数据库连接...");
+    await client.connect();
+    console.log("数据库连接成功...\b", '开始执行 SQL 文件...\n');
 
-    console.log('开始执行 SQL 文件...')
+    await client.query(delete_table);
+    console.log('\x1b[31m',"... 删除表成功....................", '\x1b[37m');
+    await client.query(create_type);
+    console.log('\x1b[32m', "... 创建符合类型成功....................\n", '\x1b[37m');
 
-    // 执行 .sql 文件内容
-    const stus = await client.query(students);
-    if(stus) console.log("students表创建成功...");
 
-    const teas = await client.query(teachers);
-    if(teas) console.log("teachers表创建成功...");
+    await client.query(books);
+    console.log("     books             表创建成功....................");
+    await client.query(book_roles);
+    console.log("     book_roles        表创建成功....................");
+    await client.query(book_sets);
+    console.log("     book_sets         表创建成功....................");
+    await client.query(book_set_other);
+    console.log("     book_set_other    表创建成功....................");
+    await client.query(book_chapter);
+    console.log("     book_chapter      表创建成功....................");
 
-    await client.end()
-
-  }catch(error) {
-    console.error('could not connect to postgres', err);
+    await client.query(users);
+    console.log("     users             表创建成功....................");
+  }catch(err) {
+    console.log("创建失败....................", err);
   }
 
+  await client.end()
 })();
 
 

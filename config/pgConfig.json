@@ -3,8 +3,8 @@
   "Postgre" :{
     "user": "postgres",
     "password": "xyf.3342",
-    "database": "postgres",
-    "host": "127.0.0.1",
-    "port": 5433
+    "database": "reading",
+    "host": "localhost",
+    "port": 5432
   }
 }
