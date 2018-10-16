@@ -128,3 +128,51 @@ book_chapter:
   book_chapter_update_time: '',
 }
 
+
+
+rankings:
+{
+  rankings_id: 0,
+  rankings_title: '',
+  rankings_content: [],
+}
+rankings_details:
+{
+  rankings_details_id: 0,
+  rankings_details_name: '',
+  rankings_details_value: '',
+  rankings_details_index: 0,
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

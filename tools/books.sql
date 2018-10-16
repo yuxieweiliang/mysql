@@ -1,8 +1,4 @@
 /*
-*  删除表
-*/
-DROP TABLE IF EXISTS public.books;
-/*
 *  创建书籍表
 *  book_id  < 主键 >
 *  book_name 书名

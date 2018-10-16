@@ -32,6 +32,9 @@ const book_chapter      = readSql('./book_chapter.sql');
 
 const users             = readSql('./users.sql');
 
+const rankings             = readSql('./rankings.sql');
+const rankings_details             = readSql('./rankings_details.sql');
+
 
 ;(async function() {
   try{
@@ -57,6 +60,13 @@ const users             = readSql('./users.sql');
 
     await client.query(users);
     console.log("     users             表创建成功....................");
+
+    await client.query(rankings);
+    console.log("     rankings          表创建成功....................");
+    await client.query(rankings_details);
+    console.log("     rankings_details  表创建成功....................");
+
+
   }catch(err) {
     console.log("创建失败....................", err);
   }
